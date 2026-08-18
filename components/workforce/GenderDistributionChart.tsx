@@ -1,5 +1,7 @@
 "use client";
 
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 import {
   Bar,
   BarChart,
@@ -21,6 +23,7 @@ const data = [
 ];
 
 export default function GenderDistributionChart() {
+  const filteredData = usePropertyFilter(data);
   return (
     <div className="flex h-full flex-col">
       <div className="mb-2 flex items-center justify-between">
@@ -36,7 +39,7 @@ export default function GenderDistributionChart() {
       <div className="min-h-[340px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={data}
+            data={filteredData}
             margin={{
               top: 0,
               right: 0,

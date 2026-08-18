@@ -1,3 +1,7 @@
+"use client";
+
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 const rows = [
   {
     property: "Siyam World",
@@ -39,6 +43,7 @@ function statusStyle(status: string) {
 }
 
 export default function TrainingStatus() {
+  const filteredRows = usePropertyFilter(rows);
   return (
     <div className="h-full">
       <div className="mb-4 flex items-center justify-between gap-4">
@@ -66,7 +71,7 @@ export default function TrainingStatus() {
           </span>
         </div>
 
-        {rows.map((row) => (
+        {filteredRows.map((row) => (
           <div
             key={row.property}
             className="grid grid-cols-[1fr_100px_100px] items-center border-b border-gray-100 px-2 py-4 last:border-b-0"

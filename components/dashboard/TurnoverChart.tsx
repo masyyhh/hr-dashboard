@@ -1,5 +1,7 @@
 "use client";
 
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 import {
   Bar,
   BarChart,
@@ -20,6 +22,7 @@ const data = [
 ];
 
 export default function TurnoverChart() {
+  const filteredData = usePropertyFilter(data);
   return (
     <div className="rounded-[24px] border border-[#e7e2da] bg-white p-6 shadow-sm">
       <div className="mb-5 flex items-center justify-between gap-4">
@@ -35,7 +38,7 @@ export default function TurnoverChart() {
       <div className="h-[340px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={data}
+            data={filteredData}
             margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
           >
             <CartesianGrid stroke="#e8e5df" vertical={false} />

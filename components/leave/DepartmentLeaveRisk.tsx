@@ -1,3 +1,7 @@
+"use client";
+
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 const rows = [
   {
     department: "Engineering",
@@ -53,6 +57,7 @@ function riskClass(risk: string) {
 }
 
 export default function DepartmentLeaveRisk() {
+  const filteredRows = usePropertyFilter(rows);
   return (
     <div>
       <div className="mb-5 flex items-center justify-between gap-4">
@@ -96,7 +101,7 @@ export default function DepartmentLeaveRisk() {
           </thead>
 
           <tbody>
-            {rows.map((row) => (
+            {filteredRows.map((row) => (
               <tr
                 key={`${row.department}-${row.property}`}
                 className="border-b border-gray-100 last:border-b-0"

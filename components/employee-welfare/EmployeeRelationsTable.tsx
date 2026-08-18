@@ -1,3 +1,7 @@
+"use client";
+
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 const relations = [
   {
     property: "Head Office",
@@ -26,6 +30,7 @@ const relations = [
 ];
 
 export default function EmployeeRelationsCard() {
+  const filteredRelations = usePropertyFilter(relations);
   return (
     <div className="h-full">
       <div className="mb-3 flex items-start justify-between gap-4">
@@ -61,7 +66,7 @@ export default function EmployeeRelationsCard() {
           </thead>
 
           <tbody>
-            {relations.map((row) => (
+            {filteredRelations.map((row) => (
               <tr
                 key={row.property}
                 className="border-b border-[#ece8e1] last:border-b-0"
