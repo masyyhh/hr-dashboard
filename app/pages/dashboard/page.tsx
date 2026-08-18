@@ -37,19 +37,19 @@ const stats = [
 const notices = [
   {
     text: "Beach Cleaning",
-    time: "1 hour ago",
+    time: "1 month ago",
     location: "Irufushi",
     image: "/images/iruveli.jpg",
   },
   {
     text: "Fathers' day gift",
-    time: "1 hour ago",
+    time: "1 month ago",
     location: "Irufushi",
     image: "/images/siyam_world.jpg",
   },
   {
     text: "Jersey Day",
-    time: "1 hour ago",
+    time: "1 month ago",
     location: "Irufushi",
     image: "/images/iruveli.jpg",
   },
