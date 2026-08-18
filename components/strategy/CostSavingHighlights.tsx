@@ -1,3 +1,7 @@
+"use client";
+
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 const savings = [
   {
     property: "Siyam World",
@@ -18,6 +22,7 @@ const savings = [
 ];
 
 export default function CostSavingHighlights() {
+  const filteredSavings = usePropertyFilter(savings);
   return (
     <div>
       <div className="mb-4 flex items-start justify-between gap-4">
@@ -45,7 +50,7 @@ export default function CostSavingHighlights() {
           </thead>
 
           <tbody>
-            {savings.map((row) => (
+            {filteredSavings.map((row) => (
               <tr
                 key={row.property}
                 className="border-b border-[#ece8e1] last:border-b-0"

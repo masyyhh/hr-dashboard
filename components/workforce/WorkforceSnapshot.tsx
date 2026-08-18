@@ -1,3 +1,7 @@
+"use client";
+
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 const workforce = [
   {
     property: "Head Office",
@@ -56,6 +60,7 @@ const workforce = [
 ];
 
 export default function WorkforceSnapshot() {
+  const filteredWorkforce = usePropertyFilter(workforce);
   return (
     <div className="overflow-hidden rounded-[24px] border border-[#e7e1d7] bg-white p-6 shadow-[0_4px_18px_rgba(0,0,0,0.025)]">
       <div className="mb-5 flex items-center justify-between">
@@ -103,7 +108,7 @@ export default function WorkforceSnapshot() {
           </thead>
 
           <tbody>
-            {workforce.map((row) => (
+            {filteredWorkforce.map((row) => (
               <tr
                 key={row.property}
                 className="border-b border-[#e8e2d9] last:border-b-0"

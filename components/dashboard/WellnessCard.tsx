@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { MapPin } from "lucide-react";
+import { ALL_PROPERTIES, useDashboardFilters } from "@/components/filters/DashboardFilters";
 
 type Notice = {
   text: string;
@@ -15,6 +18,11 @@ type WellnessCardProps = {
 export default function WellnessCard({
   notices,
 }: WellnessCardProps) {
+  const { property } = useDashboardFilters();
+  const filteredNotices = property === ALL_PROPERTIES
+    ? notices
+    : notices.filter((notice) => notice.location === property);
+
   return (
     <aside className="h-full min-h-[390px] rounded-[24px] border border-gray-100 bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.025)]">
       <div className="flex items-center justify-between border-b border-gray-100 pb-5">
@@ -28,7 +36,7 @@ export default function WellnessCard({
       </div>
 
       <div>
-        {notices.map((notice, index) => (
+        {filteredNotices.map((notice, index) => (
           <div
             key={`${notice.text}-${index}`}
             className="flex gap-3 border-b border-gray-100 py-4 last:border-0"
@@ -67,6 +75,11 @@ export default function WellnessCard({
             </div>
           </div>
         ))}
+        {filteredNotices.length === 0 && (
+          <p className="py-8 text-center text-xs text-gray-400">
+            No wellness activities for this property.
+          </p>
+        )}
       </div>
     </aside>
   );

@@ -1,3 +1,7 @@
+"use client";
+
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 type Priority = "Critical" | "High";
 type Status = "In progress" | "At risk" | "Open";
 
@@ -83,6 +87,7 @@ function statusClass(status: Status) {
 }
 
 export default function ManagementActionRegister() {
+  const filteredActions = usePropertyFilter(actions);
   return (
     <div>
       <div className="mb-4 flex items-start justify-between gap-4">
@@ -126,7 +131,7 @@ export default function ManagementActionRegister() {
           </thead>
 
           <tbody>
-            {actions.map((action) => (
+            {filteredActions.map((action) => (
               <tr
                 key={`${action.issue}-${action.property}`}
                 className="border-b border-[#ece8e1] last:border-b-0"

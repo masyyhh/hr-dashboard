@@ -1,5 +1,7 @@
 "use client";
 
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 import {
   Bar,
   BarChart,
@@ -38,6 +40,7 @@ const data = [
 ];
 
 export default function AdditionalBedsChart() {
+  const filteredData = usePropertyFilter(data);
   return (
     <div className="flex h-full flex-col">
       <div className="mb-4 flex items-start justify-between gap-4">
@@ -53,7 +56,7 @@ export default function AdditionalBedsChart() {
       <div className="min-h-[340px] flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={data}
+            data={filteredData}
             margin={{
               top: 4,
               right: 8,

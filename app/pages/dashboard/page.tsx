@@ -38,19 +38,19 @@ const notices = [
   {
     text: "Beach Cleaning",
     time: "1 month ago",
-    location: "Irufushi",
+    location: "Iru Fushi",
     image: "/images/iruveli.jpg",
   },
   {
     text: "Fathers' day gift",
     time: "1 month ago",
-    location: "Irufushi",
+    location: "Iru Fushi",
     image: "/images/siyam_world.jpg",
   },
   {
     text: "Jersey Day",
     time: "1 month ago",
-    location: "Irufushi",
+    location: "Iru Fushi",
     image: "/images/iruveli.jpg",
   },
 ];

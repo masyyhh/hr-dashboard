@@ -1,3 +1,7 @@
+"use client";
+
+import { usePropertyFilter } from "@/components/filters/DashboardFilters";
+
 const issues = [
   {
     property: "Siyam World",
@@ -26,6 +30,7 @@ const issues = [
 ];
 
 export default function AccommodationIssues() {
+  const filteredIssues = usePropertyFilter(issues);
   return (
     <div>
       <div className="mb-4 flex items-start justify-between gap-4">
@@ -39,7 +44,7 @@ export default function AccommodationIssues() {
       </div>
 
       <div className="space-y-3">
-        {issues.map((issue) => (
+        {filteredIssues.map((issue) => (
           <div
             key={issue.property}
             className={`rounded-[16px] border px-4 py-4 ${
