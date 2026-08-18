@@ -2,6 +2,11 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import StatCard from "@/components/dashboard/StatCard";
 import WellnessCard from "@/components/dashboard/WellnessCard";
 
+import HeadcountChart from "@/components/dashboard/HeadcountChart";
+import TurnoverChart from "@/components/dashboard/TurnoverChart";
+import DiversityChart from "@/components/dashboard/DiversityChart";
+import KpiStatusCard from "@/components/dashboard/KpiStatusCard";
+
 const stats = [
   {
     title: "Total Headcount",
@@ -36,7 +41,22 @@ const notices = [
     location: "Irufushi",
     image: "/images/iruveli.jpg",
   },
+  {
+    text: "Fathers' day gift",
+    time: "1 hour ago",
+    location: "Irufushi",
+    image: "/images/siyam_world.jpg",
+  },
+  {
+    text: "Jersey Day",
+    time: "1 hour ago",
+    location: "Irufushi",
+    image: "/images/iruveli.jpg",
+  },
 ];
+
+const cardStyle =
+  "overflow-hidden rounded-[24px] border border-gray-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.025)]";
 
 export default function DashboardPage() {
   return (
@@ -45,22 +65,49 @@ export default function DashboardPage() {
         <DashboardHeader />
 
         <div className="space-y-5">
+          {/* TOP KPI CARDS */}
           <section className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
             {stats.map((stat) => (
               <StatCard key={stat.title} {...stat} />
             ))}
           </section>
 
+          {/* FIRST CHART ROW */}
           <section className="grid grid-cols-1 items-stretch gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_280px]">
-            <div className="h-full min-h-[390px] rounded-[24px] border border-gray-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.025)]">
-              {/* Attendance */}
+            {/* Headcount */}
+            <div className={`${cardStyle} min-h-[390px]`}>
+              <HeadcountChart />
             </div>
 
-            <div className="h-full min-h-[390px] rounded-[24px] border border-gray-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.025)]">
-              {/* Hiring */}
+            {/* KPI Status */}
+            <div className={`${cardStyle} min-h-[390px]`}>
+              <KpiStatusCard />
             </div>
 
+            {/* Wellness - retains your existing position */}
             <WellnessCard notices={notices} />
+          </section>
+
+          {/* SECOND CHART ROW */}
+          <section className="grid grid-cols-1 items-stretch gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_280px]">
+            {/* Turnover */}
+            <div className={`${cardStyle} min-h-[390px]`}>
+              <TurnoverChart />
+            </div>
+
+            {/* Diversity */}
+            <div className={`${cardStyle} min-h-[390px]`}>
+              <DiversityChart />
+            </div>
+
+            {/*
+              Empty column intentionally preserved.
+
+              This keeps Turnover/Diversity exactly aligned
+              with Headcount/KPI above and preserves the
+              280px Wellness column.
+            */}
+            <div className="hidden xl:block" />
           </section>
         </div>
       </div>

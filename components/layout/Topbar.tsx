@@ -10,28 +10,28 @@ const navItems = [
     href: "/pages/dashboard",
   },
   {
-    label: "Employees",
-    href: "/pages/employees",
-  },
-  {
-    label: "Attendance",
-    href: "/pages/attendance",
+    label: "Workforce",
+    href: "/pages/Workforce",
   },
   {
     label: "Leave",
-    href: "/pages/leave",
+    href: "/pages/Leave",
   },
   {
-    label: "Recruitment",
-    href: "/pages/recruitment",
+    label: "Learning & Engagement",
+    href: "/pages/Learning",
   },
   {
-    label: "Payroll",
-    href: "/pages/payroll",
+    label: "Employee Welfare & Relations",
+    href: "/pages/EmployeeWelfare",
   },
   {
-    label: "Reports",
-    href: "/pages/reports",
+    label: "Strategy & Projects",
+    href: "/pages/Strategy",
+  },
+  {
+    label: "Management Actions",
+    href: "/pages/ManagementActions",
   },
 ];
 

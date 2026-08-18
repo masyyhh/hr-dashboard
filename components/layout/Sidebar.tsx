@@ -20,7 +20,7 @@ import SidebarItem from "./SidebarItem";
 
 const mainNavigation = [
   {
-    label: "Home",
+    label: "Dashboard",
     icon: House,
     href: "/dashboard",
   },
