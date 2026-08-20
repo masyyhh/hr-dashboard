@@ -1,145 +1,58 @@
-"use client";
+import Image from "next/image";
 
-import { usePropertyFilter } from "@/components/filters/DashboardFilters";
-
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  Line,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-
-const data = [
+const activities = [
   {
+    title: "Beach Cleaning",
     property: "Siyam World",
-    actual: 7.69,
-    target: 12,
+    image: "/images/siyam_world.jpg",
   },
   {
-    property: "Olhuveli",
-    actual: 9.7,
-    target: 12,
-  },
-  {
+    title: "Blood Donation",
     property: "Iru Fushi",
-    actual: 12.25,
-    target: 12,
+    image: "/images/iruveli.jpg",
   },
   {
-    property: "Vilu Reef",
-    actual: 8.34,
-    target: 12,
-  },
-  {
+    title: "Island Cleaning",
     property: "Iru Veli",
-    actual: 10.03,
-    target: 12,
+    image: "/images/iruveli.jpg",
   },
 ];
 
-export default function TrainingHoursChart() {
-  const filteredData = usePropertyFilter(data);
+export default function EngagementGallery() {
   return (
-    <div className="flex h-full flex-col">
-      <div className="mb-4 flex items-start justify-between gap-4">
+    <div>
+      <div className="mb-4 flex items-center justify-between gap-4">
         <h2 className="text-[18px] font-bold tracking-[-0.3px] text-[#102b3d]">
-          Training Hours/FTE vs Target
+          Employee Engagement & Wellness
         </h2>
 
         <span className="shrink-0 rounded-full bg-[#edf8f6] px-3 py-1.5 text-xs font-medium text-[#147c78]">
-          Target 12
+          Gallery concept
         </span>
       </div>
 
-      <div className="min-h-[330px] flex-1">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={filteredData}
-            margin={{
-              top: 5,
-              right: 10,
-              left: -10,
-              bottom: 0,
-            }}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        {activities.map((activity) => (
+          <div
+            key={`${activity.title}-${activity.property}`}
+            className="group relative min-h-[190px] overflow-hidden rounded-[20px] bg-gradient-to-br from-[#dcefeb] to-[#f6e4b9]"
           >
-            <CartesianGrid
-              vertical={false}
-              stroke="#e7e4df"
+            <Image
+              src={activity.image}
+              alt={`${activity.title} at ${activity.property}`}
+              fill
+              className="object-cover transition duration-500 group-hover:scale-[1.03]"
             />
 
-            <XAxis
-              dataKey="property"
-              axisLine={{
-                stroke: "#dedbd5",
-              }}
-              tickLine={false}
-              tick={{
-                fill: "#5f6368",
-                fontSize: 11,
-              }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
 
-            <YAxis
-              domain={[0, 14]}
-              ticks={[0, 2, 4, 6, 8, 10, 12, 14]}
-              axisLine={false}
-              tickLine={false}
-              tick={{
-                fill: "#5f6368",
-                fontSize: 11,
-              }}
-            />
-
-            <Tooltip
-              formatter={(value, name) => {
-                if (name === "actual") {
-                  return [Number(value).toFixed(2), "Actual"];
-                }
-
-                return [value, "Target"];
-              }}
-              contentStyle={{
-                borderRadius: "12px",
-                border: "1px solid #e5e7eb",
-                boxShadow:
-                  "0 8px 24px rgba(0,0,0,0.08)",
-              }}
-            />
-
-            <Legend
-              verticalAlign="top"
-              align="center"
-              iconType="circle"
-              iconSize={10}
-              wrapperStyle={{
-                paddingBottom: "14px",
-                fontSize: "12px",
-              }}
-              formatter={(value) =>
-                value === "actual" ? "Actual" : "Target"
-              }
-            />
-
-            <Bar
-              dataKey="actual"
-              fill="#16827d"
-              maxBarSize={78}
-            />
-
-            <Line
-              type="linear"
-              dataKey="target"
-              stroke="#cb4b4d"
-              strokeWidth={3}
-              dot={false}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+            <div className="absolute inset-x-0 bottom-0 p-4">
+              <p className="text-base font-bold text-white">
+                {activity.title} · {activity.property}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

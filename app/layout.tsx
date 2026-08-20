@@ -5,7 +5,7 @@ import { DashboardFiltersProvider } from "@/components/filters/DashboardFilters"
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nexora HR",
+  title: "Sun HR",
   description: "HR Dashboard",
 };
 

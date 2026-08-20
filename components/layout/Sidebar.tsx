@@ -14,6 +14,7 @@ import {
   PanelLeftClose,
   Settings,
   House,
+  Upload,
 } from "lucide-react";
 
 import SidebarItem from "./SidebarItem";
@@ -70,6 +71,15 @@ export default function Sidebar() {
           ))}
         </div>
       </nav>
+
+      {/* Bottom profile */}
+      <div className="border-t border-[#f0f1f3] px-3 py-2">
+        <SidebarItem
+          label="Upload"
+          icon={Upload}
+          href="/Upload"
+        />
+      </div>
 
       {/* Bottom profile */}
       <div className="border-t border-[#f0f1f3] px-3 py-2">
